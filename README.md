@@ -35,7 +35,21 @@ These results highlight how different models excel in different areas: some are 
 ### Ensemble Model
 To enhance the predictive ability of the disease detection model, I combined the learning from multiple existing models to create an Ensemble Model. By integrating two or more classifiers, there is a strong potential to improve overall performance, particularly recall and F1 score. Since Logistic Regression, Balanced Random Forest Classifier, Random Forest, and SVC demonstrated consistently high accuracy, these models were selected to form the pipeline for the ensemble approach.
 
-![Confusion_Matrix](visuals/Confusion Matrix-Ensemble_Model.png)
+![Confusion_Matrix](visuals/Confusion_Matrix - Ensemble_Model.png)
+
+### Logistic Regression:
+Logistic Regression is used as a baseline model because of its reliability in binary classification tasks (Diabetic vs Non-Diabetic). It works well with a moderate number of features. With class_weight = ‘balanced’, it can handle imbalanced data well by adjusting the penalties on misclassifications, and it seeks to minimise the cost function during training.
+The Logistic Regression model achieved an accuracy of 74%, with a sensitivity (recall) of 70%, indicating it correctly identifies 70% of diabetic cases. The specificity of 76% shows that the model reliably identifies non-diabetic individuals. Having a high recall rate is important in medical data, where False Negatives can be more critical than False Positives. The precision and recall for the Non-Diabetic class(0) also suggest that the model is correctly identifying healthy individuals.
+
+### Random Forest:
+Random Forest is chosen as one of the classification models as it’s robust and can handle complex relationships in the data. It is an ensemble method that combines multiple decision trees for prediction. The feature importance map is used to visualise which features played an important role in the model’s prediction. Glucose, BMI and Age played an important role in the decision-making process for the Random Forest Classifier. 
+
+![RF Feature Importance](visuals/Random_Forest.png)
+
+The Random Forest model achieved an accuracy of 76%, demonstrating strong sensitivity (87%) in correctly identifying non-diabetic cases. However, its sensitivity for diabetic cases is lower (57%), suggesting that while the model is reliable in detecting non-diabetics, it may underperform in catching all positive cases, and this is an important consideration in disease prediction, where recall is often prioritised.
+
+### Balanced Random Forest Classifier (BRF)
+BRF from the imblearn library is used as it automatically balances the dataset by under sampling the majority class at each tree during training. The Balanced Random Forest model achieved an overall accuracy of 74%, providing balanced sensitivity and specificity across both classes. With a recall (sensitivity) of 64% for diabetic cases, the model is effective in identifying diabetic individuals, though precision suggests potential room for reducing false positives. There is a reliable balance between detecting diabetic patients and minimising false positives compared to the standard Random Forest model, which underperformed in detecting positive cases.
 
 
 ## Model Evaluation:
