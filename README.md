@@ -9,3 +9,6 @@ In many cases, diabetes can be prevented if the risk is identified well in advan
 
 ### What makes this project unique and impactful:
 The project demonstrates the efficiency and reliability of AI models in early disease detection. A very thorough data preprocessing pipeline was implemented to ensure accuracy: missing values and duplication were addressed, outliers were handled using the Interquartile Range (IQR), and skewed features were transformed using log functions. As the dataset was imbalanced, appropriate measures were taken to balance the target variable ‘Outcome’ for more precise predictions. The code was developed in Jupyter Notebook using Python, with robust support from libraries such as Scikit‑learn, Pandas, NumPy, and Matplotlib. This combination of careful preprocessing, model experimentation, and reproducible coding makes the project impactful as a demonstration of how AI can contribute to preventative healthcare.
+
+## Results:
+
