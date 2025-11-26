@@ -15,7 +15,7 @@ The project demonstrates the efficiency and reliability of AI models in early di
 ### Performance Table:
 The following chart summarises the performance metrics of six machine learning models applied to diabetes prediction.
 
-![Model Comparison](visuals/Model_comparison.png) 
+![Model Comparison](visuals/Model_comparison.png)
 
 Voting Ensemble achieved the highest recall (0.889), which is especially important in medical prediction because it helps minimise false negatives ensuring fewer at‑risk patients are missed.
 
