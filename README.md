@@ -12,4 +12,16 @@ The project demonstrates the efficiency and reliability of AI models in early di
 
 ## Results:
 
+The following chart summarises the performance metrics of six machine learning models applied to diabetes prediction.
+
 ![Model Comparison](images/Model_comparison.png) 
+
+Voting Ensemble achieved the highest recall (0.889), which is especially important in medical prediction because it helps minimise false negatives ensuring fewer at‑risk patients are missed.
+
+Logistic Regression recorded the highest ROC AUC (0.833), showing strong overall discrimination between diabetic and non‑diabetic cases.
+
+Random Forest delivered the best specificity (0.867), meaning it performed well in correctly identifying non‑diabetic cases and reducing false positives.
+
+For next five years diabetes prediction, the Voting Ensemble model showed the highest recall (0.889), making it the most suitable for clinical data where identifying diabetic cases is critical. Even though Random Forest achieved the highest specificity, and Logistic Regression offered balanced performance with high interpretability, the Voting Ensemble strikes the best balance between sensitivity and overall predictive power, supporting its selection as the final model.
+
+These results highlight how different models excel in different areas: some are better at catching positive cases, while others are stronger at ruling out negatives. Together, they demonstrate the value of comparing multiple approaches when tackling healthcare prediction problems.
