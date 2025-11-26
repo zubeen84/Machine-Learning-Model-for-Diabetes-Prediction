@@ -48,6 +48,11 @@ To visualise the performance of all six ML models, the ROC Curve plots the True 
 
 ![ROC Curve](visuals/ROC_Curve.png)
 
+
+## Dependencies 
+pip install -r requirements.txt
+
+
 ## Dataset and Preprocessing:
 
 The publicly available diabetes dataset has information on Pregnancies, Glucose, Blood Pressure, Skin Thickness, Insulin, BMI, Diabetes Pedigree Function, and Age. The target variable is titled as ‘Outcome’ which contains 0 and 1. In clinical data, 0 is normally considered equal to ‘No disease’ and 1 is equal to ‘disease’. 
@@ -77,12 +82,24 @@ A Correlation Matrix is used to view the relationship between different features
 
 ![correlation](visuals/corr.png)
 
+### Dependent Variable:
+The dependent or target variable is labelled as ‘Outcome’.
+Diabetic: 268
+Non-Diabetic: 500
+The outcome of this dataset is imbalanced, which is normally common in clinical data (more non-diabetic entries than diabetic). Overall, it's fair to say that the outcome is biased towards non-diabetic samples. The machine learning model is going to predict whether these people are likely to get diabetes in the next five years. 
+
+![dependentvariable](visuals/target.png)
+
+### Train-Test and Standard Scaling:
+First, the Independent (x) and dependent (y) variables are separated from the cleaned data frame.  By using the sklearn library, the data is split into train and test by using 70:30 split. The reason for 70:30 ratio is to ensure that the model has enough data to learn meaningful patterns during training. As this is medium-sized data, 30% is considered a fair amount of unseen data for the model to make any predictions.
+Feature scaling is used to standardise the train and test split. Data Scaling is the standard machine learning method, and this is to ensure that features with different scales do not affect the model’s performance. The dependent variable is not standardised as it’s a binary classification target, and scaling is not necessary.
+
 ## Models:
 
 ### Ensemble Model
 To enhance the predictive ability of the disease detection model, I combined the learning from multiple existing models to create an Ensemble Model. By integrating two or more classifiers, there is a strong potential to improve overall performance, particularly recall and F1 score. Since Logistic Regression, Balanced Random Forest Classifier, Random Forest, and SVC demonstrated consistently high accuracy, these models were selected to form the pipeline for the ensemble approach.
 
-![Confusion_Matrix](visuals/Confusion_Matrix - Ensemble_Model.png)
+![Confusion_Matrix](visuals/confusion_matrix.png)
 
 ### Logistic Regression:
 Logistic Regression is used as a baseline model because of its reliability in binary classification tasks (Diabetic vs Non-Diabetic). It works well with a moderate number of features. With class_weight = ‘balanced’, it can handle imbalanced data well by adjusting the penalties on misclassifications, and it seeks to minimise the cost function during training.
@@ -103,3 +120,19 @@ XGBoost (eXtreme Gradient Boosting) is selected for its robust performance with 
 
 ### Support Vector Classifier (SVC)
 SVC is very effective in high-dimensional spaces. It is suitable for binary classification, and it aims to find the optimal boundary that maximally separates the classes. It achieved an overall accuracy of 74%, performing better in identifying non-diabetic individuals with a recall of 86%. However, recall for diabetic patients is relatively lower at 52%, suggesting the model may need refinement or threshold tuning to reduce false negatives in diabetic predictions.
+
+## Future Work
+- Deploy the model as a web app for clinical use.
+- Explore deep learning models for improved recall.
+- Expand dataset for better generalisation.
+
+## Acknowledgements
+- Dataset: Pima Indians Diabetes Database (UCI ML Repository).
+- Libraries: scikit-learn, pandas, numpy, matplotlib, seaborn, xgboost.
+
+## License
+This project is licensed under the MIT License.
+
+## Contact
+Created by Zubeen Khalid — feel free to connect on [LinkedIn](www.linkedin.com/in/zubeenkhalid) or explore more projects on [GitHub](https://github.com/zubeen84).
+
