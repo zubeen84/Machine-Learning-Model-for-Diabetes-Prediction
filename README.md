@@ -12,3 +12,4 @@ The project demonstrates the efficiency and reliability of AI models in early di
 
 ## Results:
 
+![Model Comparison](images/Model_comparison.png) 
