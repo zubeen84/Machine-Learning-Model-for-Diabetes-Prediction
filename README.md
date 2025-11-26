@@ -72,13 +72,13 @@ To address skewed distributions, histograms were plotted and Log Transformation 
 ### Correlation Matrix:
 A Correlation Matrix is used to view the relationship between different features and the target variable. Key Findings of the correlation matrix are:
 
-•	Glucose has a strong positive correlation (0.49) with Outcome (Higher glucose = higher diabetes risk).
-•	BMI and Insulin also show moderate correlation with diabetes (0.31 and 0.27, respectively).
-•	Age and DiabetesPedigreeFunction are mildly correlated (0.24 and 0.18, respectively), i.e. older age and family history are contributing factors.
-•	Pregnancies also have some link with diabetes (correlation of 0.22).
-•	BloodPressure and SkinThickness show weak correlation with Outcome, but are still relevant.
-•	DiabetesPedigreeFunction is less correlated overall, but still relevant.
-•	BMI and SkinThickness show a positive correlation (0.56) with each other. One is causing an increase in the other. Because Correlation is less than 0.8, both columns are kept for the model as they might make a unique contribution to the prediction of diabetes.
+- Glucose has a strong positive correlation (0.49) with Outcome (Higher glucose = higher diabetes risk)
+- BMI and Insulin also show moderate correlation with diabetes (0.31 and 0.27, respectively)
+- Age and DiabetesPedigreeFunction are mildly correlated (0.24 and 0.18, respectively), i.e. older age and family history are contributing factors
+- Pregnancies also have some link with diabetes (correlation of 0.22)
+- BloodPressure and SkinThickness show weak correlation with Outcome, but are still relevant
+- DiabetesPedigreeFunction is less correlated overall, but still relevant
+- BMI and SkinThickness show a positive correlation (0.56) with each other. One is causing an increase in the other. Because Correlation is less than 0.8, both columns are kept for the model as they might make a unique contribution to the prediction of diabetes.
 
 ![correlation](visuals/corr.png)
 
@@ -134,5 +134,6 @@ SVC is very effective in high-dimensional spaces. It is suitable for binary clas
 This project is licensed under the MIT License.
 
 ## Contact
-Created by Zubeen Khalid — feel free to connect on [LinkedIn](www.linkedin.com/in/zubeenkhalid) or explore more projects on [GitHub](https://github.com/zubeen84).
+Created by Zubeen Khalid! 
+Feel free to connect on [LinkedIn](www.linkedin.com/in/zubeenkhalid) or explore more projects on [GitHub](https://github.com/zubeen84).
 
