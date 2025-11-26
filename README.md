@@ -32,6 +32,53 @@ For next five years diabetes prediction, the Voting Ensemble model showed the hi
 
 These results highlight how different models excel in different areas: some are better at catching positive cases, while others are stronger at ruling out negatives. Together, they demonstrate the value of comparing multiple approaches when tackling healthcare prediction problems.
 
+
+
+
+## Model Evaluation:
+### Stratified K-fold Validation:
+
+Stratified K‑Fold cross‑validation is applied to evaluate model performance on unseen data. Rather than depending on a single train‑test split, each model is trained and tested across multiple folds, ensuring that every subset of the data is used for both training and validation. This approach provides a more reliable and robust estimate of how the models generalise to new cases.
+
+![K-fold Validation](visuals/K-fold.png) 
+
+### ROC Curve
+
+To visualise the performance of all six ML models, the ROC Curve plots the True Positive Rate against the False Positive Rate across different classification thresholds. This comparison highlights that multiple models are capable of reliable classification, but the Voting Ensemble stands out by combining strengths across individual classifiers. A higher AUC means better ability to correctly identify both diabetic and non-diabetic cases, making this visual a key indicator of model effectiveness. 
+
+![ROC Curve](visuals/ROC_Curve.png)
+
+## Dataset and Preprocessing:
+
+The publicly available diabetes dataset has information on Pregnancies, Glucose, Blood Pressure, Skin Thickness, Insulin, BMI, Diabetes Pedigree Function, and Age. The target variable is titled as ‘Outcome’ which contains 0 and 1. In clinical data, 0 is normally considered equal to ‘No disease’ and 1 is equal to ‘disease’. 
+The dataset contains 768 samples with nine numerical features (floats and integers). Initial analysis showed no duplicate rows, but several features had missing or zero entries.
+
+In the ‘Pregnancies’ column, 111 entries were zero. These were retained, as they may represent male samples or females who haven’t been pregnant.
+
+Zero values in Skin Thickness, Insulin, BMI, Blood Pressure, and Glucose were replaced with the median of each feature to reduce bias from skewness and outliers.
+
+Outliers were visualised using box plots and assessed with Z‑scores. Since the dataset is small, rows with outliers weren’t removed. Instead, the Interquartile Range (IQR) method was used to cap extreme values in Insulin, SkinThickness, Pregnancies, BMI, and BloodPressure. This significantly improved data quality, and recalculated Z‑scores showed no extreme outliers.
+![boxplot](visuals/boxplot.png)
+
+To address skewed distributions, histograms were plotted and Log Transformation was applied to DiabetesPedigreeFunction, which showed moderate to high skewness. This step helped improve model performance, especially for algorithms sensitive to feature distribution (e.g., SVM, Logistic Regression).
+
+![skewness](visuals/skewness.png)
+
+### Correlation Matrix:
+A Correlation Matrix is used to view the relationship between different features and the target variable. Key Findings of the correlation matrix are:
+
+•	Glucose has a strong positive correlation (0.49) with Outcome (Higher glucose = higher diabetes risk).
+•	BMI and Insulin also show moderate correlation with diabetes (0.31 and 0.27, respectively).
+•	Age and DiabetesPedigreeFunction are mildly correlated (0.24 and 0.18, respectively), i.e. older age and family history are contributing factors.
+•	Pregnancies also have some link with diabetes (correlation of 0.22).
+•	BloodPressure and SkinThickness show weak correlation with Outcome, but are still relevant.
+•	DiabetesPedigreeFunction is less correlated overall, but still relevant.
+•	BMI and SkinThickness show a positive correlation (0.56) with each other. One is causing an increase in the other. Because Correlation is less than 0.8, both columns are kept for the model as they might make a unique contribution to the prediction of diabetes.
+
+![correlation](visuals/corr.png)
+
+## Models:
+
 ### Ensemble Model
 To enhance the predictive ability of the disease detection model, I combined the learning from multiple existing models to create an Ensemble Model. By integrating two or more classifiers, there is a strong potential to improve overall performance, particularly recall and F1 score. Since Logistic Regression, Balanced Random Forest Classifier, Random Forest, and SVC demonstrated consistently high accuracy, these models were selected to form the pipeline for the ensemble approach.
 
@@ -51,13 +98,8 @@ The Random Forest model achieved an accuracy of 76%, demonstrating strong sensit
 ### Balanced Random Forest Classifier (BRF)
 BRF from the imblearn library is used as it automatically balances the dataset by under sampling the majority class at each tree during training. The Balanced Random Forest model achieved an overall accuracy of 74%, providing balanced sensitivity and specificity across both classes. With a recall (sensitivity) of 64% for diabetic cases, the model is effective in identifying diabetic individuals, though precision suggests potential room for reducing false positives. There is a reliable balance between detecting diabetic patients and minimising false positives compared to the standard Random Forest model, which underperformed in detecting positive cases.
 
+### XGBOOST
+XGBoost (eXtreme Gradient Boosting) is selected for its robust performance with tabular data. It efficiently handles complex and non-linear relationships. The XGBoost model achieved an accuracy of 73%, with stronger performance in predicting non-diabetic cases. Its recall (sensitivity) for diabetic patients is 58%, which indicates that the model could be improved for identifying positive cases with some adjustments.
 
-## Model Evaluation:
-### Stratified K-fold Validation:
-
-Stratified K‑Fold cross‑validation is applied to evaluate model performance on unseen data. Rather than depending on a single train‑test split, each model is trained and tested across multiple folds, ensuring that every subset of the data is used for both training and validation. This approach provides a more reliable and robust estimate of how the models generalise to new cases.
-
-![K-fold Validation](visuals/K-fold.png) 
-
-
-
+### Support Vector Classifier (SVC)
+SVC is very effective in high-dimensional spaces. It is suitable for binary classification, and it aims to find the optimal boundary that maximally separates the classes. It achieved an overall accuracy of 74%, performing better in identifying non-diabetic individuals with a recall of 86%. However, recall for diabetic patients is relatively lower at 52%, suggesting the model may need refinement or threshold tuning to reduce false negatives in diabetic predictions.
